@@ -1,0 +1,21 @@
+<template name="testTime">
+  {{#if subs.testData1.ready}}
+    <div>Subs1 Done</div>
+  {{/if}}
+  {{#if subs.testData2.ready}}
+    <div>Subs2 Done</div>
+  {{/if}}
+  {{#if subs.testData3.ready}}
+    <div>Subs3 Done</div>
+  {{/if}}
+  {{#if ready}}
+    <div id="mock-data-ready">Mock Data Ready!!</div>
+    <h2 style="color:red">{{dataLoadingTime}}</h2>
+    <h2 style="color:red">{{dataSize}}</h2>
+    <div>
+      {{#each getMockData}}
+        {{toString this}}
+      {{/each}}
+    </div>
+  {{/if}}
+</template>
