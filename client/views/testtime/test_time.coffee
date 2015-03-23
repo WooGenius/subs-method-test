@@ -3,6 +3,7 @@ dataSize = new ReactiveVar(0)
 
 Template.testTime.created = ->
   @_startTime = new Date
+  dataSize.set(0)
 
   Meteor.connection._stream.on('message', (data) ->
     dataSize.set(dataSize.get() + data.length)

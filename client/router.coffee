@@ -128,8 +128,8 @@ Router.map ->
       null
   )
 
-  @route('unblockedMethod'
-    path: '/unblockedMethod'
+  @route('unblockedmethod'
+    path: '/unblockedmethod'
     template: 'testTime'
     onRun: ->
       MethodSearch.remove({})
@@ -166,7 +166,7 @@ Router.map ->
     template: 'testTime'
     onRun: ->
       MethodSearch.remove({})
-      Meteor.call('mockData', (err, res)->
+      Meteor.call('mockDataWithoutHistory', (err, res)->
         _.each(res, (data) ->
           MethodSearch.insert(data)
         )

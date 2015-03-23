@@ -7,13 +7,13 @@ Meteor.startup ->
   mockData = JSON.parse(Assets.getText("MOCK_DATA.json"))
   _.each(mockData, (data)->
     Test1.insert(data)
-    Test2.insert(data)
-    Test3.insert(data)
-    Test4.insert(data)
   )
 
-  console.log "Test Data #{Test1.find().count()} inserted"
+  Test2.insert({test:"Test"})
+  Test3.insert({test:"Test"})
+  Test4.insert({test:"Test"})
 
+  console.log "Test Data #{Test1.find().count()} inserted"
   console.log "Test Data preparing done"
 
   # Bootstrap Collections
