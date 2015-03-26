@@ -195,6 +195,35 @@ Router.map ->
   )
 
 
+  MockData = new Mongo.Collection(null)
+
+  @route('pseudosub'
+    path: '/pseudosub'
+    template: 'testTime'
+    data: ->
+      data =
+        subs: @subs
+        getTestData1: ->
+          if @subs and @subs.testData1.ready()
+            Test2.find()
+        getTestData2: ->
+          if @subs and @subs.testData2.ready()
+            Test3.find()
+        getTestData3: ->
+          if @subs and @subs.testData3.ready()
+            Test4.find()
+        getMockData: -> MockData.find()
+        ready: -> @subs and @subs.mockData.ready()
+    subscriptions: ->
+      @subs =
+        mockData: PseudoSub.subscribe(MockData, "mockData")
+        testData1: Meteor.subscribe("publishWithUnblock1")
+        testData2: Meteor.subscribe("publishWithUnblock2")
+        testData3: Meteor.subscribe("publishWithUnblock3")
+      null
+  )
+
+
 
 #  @route 'foos_show',
 #    path: '/foo/:_id',
